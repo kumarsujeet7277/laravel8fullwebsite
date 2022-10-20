@@ -22,42 +22,49 @@
                                 <label for="" class="col-md-4 control-label">Product Name</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Product Name" class="form-control input-md" wire:model="name" wire:keyup="generateSlug">
+                                    @error('name') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Product Slug</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Product Slug" class="form-control input-md" wire:model="slug">
+                                    @error('slug') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Short Description</label>
                                 <div class="col-md-4">
                                     <textarea name="" class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
+                                    @error('short_description') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Description</label>
                                 <div class="col-md-4">
-                                    <textarea name="" class="form-control" placeholder="Short Description" wire:model="description"></textarea>
+                                    <textarea name="" class="form-control" placeholder="Description" wire:model="description"></textarea>
+                                    @error('description') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Regular Price</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Regular Price" class="form-control input-md" name="" id="" wire:model="regular_price">
+                                    @error('regular_price') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Sale Price</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Sale Price" class="form-control input-md" wire:model="sale_price">
+                                    @error('sale_price') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">SKU</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="SKU" class="form-control input-md" wire:model="SKU">
+                                    @error('SKU') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,6 +74,7 @@
                                         <option value="instock">InStock</option>
                                         <option value="outofstock">Out Of Stock</option>
                                     </select>
+                                    @error('stock_status') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -82,6 +90,7 @@
                                 <label for="" class="col-md-4 control-label">Quantity</label>
                                 <div class="col-md-4">
                                     <input type="text" placeholder="Quantity" class="form-control input-md" wire:model="quantity">
+                                    @error('quantity') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -91,7 +100,7 @@
                                     @if ($image)
                                         <img src="{{$image->temporaryUrl()}}" alt="" width="120">    
                                     @endif
-                                    
+                                    @error('image') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -103,6 +112,7 @@
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
