@@ -11,10 +11,12 @@ use App\Models\Sale;
 class DetailsComponent extends Component
 {
     public $slug;
+    public $qty;
 
     public function mount($slug)
     {
         $this->slug = $slug;
+        $this->qty = 1;
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -23,6 +25,20 @@ class DetailsComponent extends Component
         session()->flash('success_message','Item added in cart');
         return redirect()->route('product.cart');
     }
+
+    public function increaseQuantity()
+    {
+        $this->qty++;
+    }
+
+    public function decreaseQuantity()
+    {
+        if($this->qty > 1)
+        {
+            $this->qty--;
+        }
+    }
+
 
     public function render()
     {
