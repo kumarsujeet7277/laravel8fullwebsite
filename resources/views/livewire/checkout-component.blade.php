@@ -1,4 +1,16 @@
 	<main id="main" class="main-site">
+		<style>
+			.cvc{	
+				font-size: 13px;
+				line-height: 19px;
+				display: inline-block;
+				height: 43px;
+				padding: 2px 20px;
+				max-width: 300px;
+				width: 100%;
+				border: 1px solid #e6e6e6;
+			}
+		</style>
 
 		<div class="container">
 
@@ -135,8 +147,35 @@
 				<div class="summary summary-checkout">
 					<div class="summary-item payment-method">
 						<h4 class="title-box">Payment Method</h4>
-						<p class="summary-info"><span class="title">Check / Money order</span></p>
-						<p class="summary-info"><span class="title">Credit Cart (saved)</span></p>
+							<div class="wrap-address-billing">
+								@if ($paymentmode == 'card')
+									<p class="row-in-form">
+										@if (Session::has('stripe_error'))
+											<div class="alert alert-danger" role="alert">{{Session::get('stripe_error')}}</div>
+										@endif
+										<label for="card-no">Card Number</label>
+										<input type="text" name="card-no" value="" placeholder="Card Number" wire:model="card_no">
+										@error('card_no')<span class="text-danger">{{$message}}</span>@enderror
+									</p>
+
+									<p class="row-in-form">
+										<label for="exp-month">Expiry Month</label>
+										<input type="text" name="exp-month" value="" placeholder="Expiry Month" wire:model="exp_month">
+										@error('exp_month')<span class="text-danger">{{$message}}</span>@enderror
+									</p>
+									<p class="row-in-form">
+										<label for="exp-year">Expiry Year</label>
+										<input type="text" name="exp-year" value="" placeholder="Expiry Year" wire:model="exp_year">
+										@error('exp_year')<span class="text-danger">{{$message}}</span>@enderror
+									</p>
+									<p class="row-in-form">
+										<label for="cvc">CVC</label>
+										<input type="password" name="cvc" class="cvc" value="" placeholder="CVC" wire:model="cvc">
+										@error('cvc')<span class="text-danger">{{$message}}</span>@enderror
+									</p>
+								@endif
+							</div>
+						
 						<div class="choose-payment-methods">
 							<label class="payment-method">
 								<input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="paymentmode">
