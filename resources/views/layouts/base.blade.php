@@ -84,6 +84,9 @@
 														<a title="All Coupons" href="{{route('admin.coupons')}}">All Coupons</a>
 													</li>
 													<li class="menu-item">
+														<a title="All Orders" href="{{route('admin.order')}}">All Orders</a>
+													</li>
+													<li class="menu-item">
 														<a title="Manage Home Category" href="{{route('admin.homecategory')}}">Manage Home Category</a>
 													</li>
 													<li class="memu-item">
