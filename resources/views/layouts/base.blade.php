@@ -104,6 +104,9 @@
 													<li class="menu-item" >
 														<a title="Dashboard" href="{{ Route('user.dashboard')}}">Dashboard</a>
 													</li>
+													<li class="menu-item" >
+														<a title="order" href="{{ Route('user.orders')}}">My Order</a>
+													</li>
 													<li class="memu-item">
 														<a href=" {{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 													</li>
