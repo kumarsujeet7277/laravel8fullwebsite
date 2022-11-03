@@ -1,4 +1,9 @@
 <div>
+    <style>
+        .review:hover{
+            color: red;
+        }
+    </style>
     <div class="container" style="padding: 30px 0;">
         @if (Session::has('order_message'))
             <div class="alert alert-danger" role="alert">{{Session::get('order_message')}}</div>
@@ -65,6 +70,10 @@
                                             <h5>{{$item->quantity}}</h5>
                                         </div> 
                                         <div class="price-field sub-total"><p class="price">${{$item->price * $item->quantity}}</p></div>
+                                        @if ($order->status == 'delivered' && $item->rstatus == false)
+                                            <div class="price-field sub-total"><p class="price"><a href="{{Route('user.review',['order_item_id'=> $item->id])}}" class="review">write Review</a></p></div>    
+                                        @endif
+                                        
                                     </li>								
                                 @endforeach				
                             </ul>
