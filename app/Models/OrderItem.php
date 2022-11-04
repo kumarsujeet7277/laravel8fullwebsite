@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
     use HasFactory;
+    
 
 
     protected $table = "order_items";
@@ -20,5 +21,10 @@ class OrderItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class,'order_item_id');
     }
 }
