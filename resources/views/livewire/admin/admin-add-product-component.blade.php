@@ -12,7 +12,7 @@
                                 <a href="{{route('admin.product')}}" class="btn btn-success pull-right">All Products</a>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="panel-body">
                         @if (Session::has('message'))
                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
@@ -101,6 +101,18 @@
                                         <img src="{{$image->temporaryUrl()}}" alt="" width="120">    
                                     @endif
                                     @error('image') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-md-4 control-label">Product Gallery</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="input-file" wire:model="images" multiple>
+                                    @if ($images)
+                                        @foreach ($images as $image)
+                                            <img src="{{$image->temporaryUrl()}}" alt="" width="120">    
+                                        @endforeach
+                                    @endif
+                                    @error('images') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
                             <div class="form-group">

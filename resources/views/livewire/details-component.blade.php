@@ -29,6 +29,16 @@
                             <li data-thumb="{{ asset('assets/images/products') }}/{{$product->image}}">
                                 <img src="{{ asset('assets/images/products') }}/{{$product->image}}" alt="{{$product->name}}" />
                             </li>
+                            @php
+                                $images = explode(',',$product->images);   
+                            @endphp
+                            @foreach ($images as $image)
+                                @if($image)
+                                    <li data-thumb="{{ asset('assets/images/products') }}/{{$image}}">
+                                        <img src="{{ asset('assets/images/products') }}/{{$image}}" alt="{{$product->name}}" />
+                                    </li>   
+                                @endif
+                            @endforeach
                           </ul>
                         </div>
                     </div>
@@ -67,11 +77,13 @@
                         <div class="wrap-social">
                             <a class="link-socail" href="#"><img src="{{ asset('assets/images/social-list.png') }}" alt=""></a>
                         </div>
-                        @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                            <div class="wrap-price"><span class="product-price">${{$product->sale_price}}</span>
-                            <del><span class="product-price regprice">{{$product->regular_price}}</span></del></div>
-                        @else
-                            <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+                        @if(isset($sale->status))
+                            @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                                <div class="wrap-price"><span class="product-price">${{$product->sale_price}}</span>
+                                <del><span class="product-price regprice">{{$product->regular_price}}</span></del></div>
+                            @else
+                                <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+                            @endif
                         @endif
                         
                         <div class="stock-info in-stock">
@@ -87,10 +99,12 @@
                             </div>
                         </div>
                         <div class="wrap-butons">
-                            @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add to Cart</a>
-                            @else
-                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
+                            @if(isset($sale->status))
+                                @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                                    <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">Add to Cart</a>
+                                @else
+                                    <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
+                                @endif
                             @endif
                             <div class="wrap-btn">
                                 <a href="#" class="btn btn-compare">Add Compare</a>
