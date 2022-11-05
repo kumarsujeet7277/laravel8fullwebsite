@@ -34,6 +34,7 @@ use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 
 
 
@@ -58,7 +59,7 @@ Route::get('/shop',ShopComponent::class);
 Route::get('/cart',CartComponent::class)->name('product.cart');
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 Route::get('/aboutus',AboutusComponent::class);
-Route::get('/Contactus',ContactusComponent::class);
+Route::get('/Contact-us',ContactusComponent::class)->name('contact');
 Route::get('/product/{slug}',DetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/search', SearchComponent::class)->name('product.search');
@@ -118,5 +119,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 
     Route::get('/admin/order',AdminOrderComponent::class)->name('admin.order');
     Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+
+    Route::get('/admin/contact-us',AdminContactComponent::class)->name('admin.contact');
 });
 
