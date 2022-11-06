@@ -22,7 +22,10 @@ class AdminProductComponent extends Component
             $images = explode(',',$product->images);
             foreach($images as $image)
             {
-                unlink('assets/images/products'.'/'.$image);
+                if($image)
+                {
+                    unlink('assets/images/products'.'/'.$image);
+                }
             }
         }
         $product->delete();
