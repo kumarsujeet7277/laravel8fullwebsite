@@ -33,6 +33,17 @@
                                     @error('slug') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-level">Parent Category</label>
+                                <div class="col-md-4">
+                                    <select name="" id="" class="form-control input-md" wire:model="category_id">
+                                        <option value="">None</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-level"></label>
