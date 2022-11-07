@@ -168,6 +168,10 @@ class CartComponent extends Component
 
         $this->setAmountForCheckout();
 
+        if(Auth::check())
+        {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
         return view('livewire.cart-component')->layout('layouts.base');
     }
 }
