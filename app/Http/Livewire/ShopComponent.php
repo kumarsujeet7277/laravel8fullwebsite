@@ -77,6 +77,7 @@ class ShopComponent extends Component
         if(Auth::check())
         {
             Cart::instance('cart')->store(Auth::user()->email);
+            Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
         return view('livewire.shop-component', ['products' => $product, 'categories'=>$category])->layout('layouts.base');
