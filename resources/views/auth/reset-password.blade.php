@@ -63,7 +63,7 @@
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <label for="frm-login-uname">Email Address:</label>
-                                    <input type="email" id="frm-login-uname" name="email" placeholder="Type your email address" :value="{{$request->email)}}" required autofocus>
+                                    <input type="email" id="frm-login-uname" name="email" placeholder="Type your email address" :value="{{$request->email}}" required autofocus>
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half left-item ">
                                     <label for="Password">Password *</label>
