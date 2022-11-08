@@ -46,8 +46,8 @@
                                         <td>{{$category->slug}}</td>
                                         <td>
                                             <ul class="sclist">
-                                                @foreach ($category->subCategory as $category)
-                                                    <li><i class="fa fa-caret-right"></i>{{$category->name}}</li>
+                                                @foreach ($category->subCategory as $scategory)
+                                                    <li><i class="fa fa-caret-right"></i>{{$scategory->name}}<a href="{{route('admin.editcategory',['category_slug'=>$category->slug, 'scategory_slug'=>$scategory->slug])}}"><i class="fa fa-edit"></i></a></li>        
                                                 @endforeach
                                             </ul>
                                         </td>

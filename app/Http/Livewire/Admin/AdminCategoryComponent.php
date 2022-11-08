@@ -10,6 +10,8 @@ class AdminCategoryComponent extends Component
 {
     use WithPagination;
 
+    
+
     public function deleteCategory($id)
     {
         $category = Category::find($id);
