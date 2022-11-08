@@ -9,6 +9,14 @@
         .sclist{
             list-style: none;
         }
+        .sclist li{
+            line-height: 33px;
+            border-bottom: 1px solid #ccc;
+        }
+        .slink{
+            font-size: 16px;
+            margin-left: 12px;
+        }
     </style>
     <div class="container" style="padding: 30px 0px;">
         <div class="row">
@@ -47,13 +55,16 @@
                                         <td>
                                             <ul class="sclist">
                                                 @foreach ($category->subCategory as $scategory)
-                                                    <li><i class="fa fa-caret-right"></i>{{$scategory->name}}<a href="{{route('admin.editcategory',['category_slug'=>$category->slug, 'scategory_slug'=>$scategory->slug])}}"><i class="fa fa-edit"></i></a></li>        
+                                                    <li><i class="fa fa-caret-right"></i>{{$scategory->name}}
+                                                        <a href="{{route('admin.editcategory',['category_slug'=>$category->slug, 'scategory_slug'=>$scategory->slug])}}"><i class="fa fa-edit"></i></a>
+                                                        <a href="#" onclick="confirm('Are you sure! You want to delete sub category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteSubcategory({{$scategory->id}})"><i class="fa fa-times text-danger"></i></a>
+                                                    </li>        
                                                 @endforeach
                                             </ul>
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.editcategory',['category_slug'=>$category->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this Category')||event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{$category->id}})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                            <a class="slink" href="{{route('admin.editcategory',['category_slug'=>$category->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
+                                            <a class="slink" href="#" onclick="confirm('Are you sure, You want to delete this Category')||event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{$category->id}})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
