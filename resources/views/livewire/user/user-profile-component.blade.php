@@ -25,6 +25,7 @@
                             <p><b>Province :</b>{{$user->profile->province}}</p>
                             <p><b>Country :</b>{{$user->profile->country}}</p>
                             <p><b>Zip Code :</b>{{$user->profile->zipcode}}</p>
+                            <a href="{{route('user.editprofile')}}" class="btn btn-info pull-right">Update Profile</a>
                         </div>
                     </div>
                 </div>
