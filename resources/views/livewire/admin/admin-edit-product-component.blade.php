@@ -137,7 +137,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group"> 
                                 <label for="" class="col-md-4 control-label">Sub Category</label>
                                 <div class="col-md-4">
                                     <select class="form-control" wire:model="scategory_id">
@@ -149,6 +149,34 @@
                                     @error('scategory_id') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             </div>
+                            
+
+                            <div class="form-group">
+                                <label for="" class="col-md-4 control-label">Product Attribute</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" wire:model="attr">
+                                        <option value="0">Select Attribute</option>
+                                        @foreach ($pattributes as $pattribute)
+                                            <option value="{{$pattribute->id}}">{{$pattribute->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-info" wire:click.prevent="add">Add</button>
+                                </div>
+                            </div>             
+                            @foreach ($inputs as $key => $value)
+                                <div class="form-group">
+                                    <label for=""class="col-md-4 control-label">{{$pattributes->where('id',$attribute_arr[$key] ?? 'not found')->first()->name ?? 'not found'}}</label>
+                                    <div class="col-md-3">
+                                        <input type="text" placeholder="{{$pattributes->where('id',$attribute_arr[$key] ?? 'not found')->first()->name ?? 'not found'}}" class="form-control input-md" wire:model="attribute_values.{{$value}}" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">Remove</button>
+                                    </div>
+                                </div>
+                            @endforeach
+
 
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label"></label>
